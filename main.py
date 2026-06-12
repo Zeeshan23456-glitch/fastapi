@@ -9,3 +9,7 @@ def home():
 @app.get('/user')
 def getUser ():
     return {'data': {'name': 'Masham'}}
+
+@app.post('/product')
+def addproduct():
+    return {'data': {'Name': 'Table'}}
