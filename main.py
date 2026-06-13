@@ -1,4 +1,7 @@
-from fastapi import FastAPI
+from fastapi import FastAPI,Depends
+from sqlalchemy.orm import Session
+
+from database import get_db
 
 app = FastAPI()
 
@@ -13,3 +16,7 @@ def getUser ():
 @app.post('/product')
 def addproduct():
     return {'data': {'Name': 'Table'}}
+
+@app.get("/connection")
+def db_connection(db: Session = Depends(get_db)):
+    return {"message": "MySQL Connected Successfully"}
